@@ -59,6 +59,13 @@ console.log(anotherArr.sort().reverse().slice(anotherArr.length - 1).toString())
 // Find both (smallest & largest)
 
 function getTwoNum (arr) {
+
+    // if array is empty - safty check
+
+    if (arr.length === 0) {
+        return `Array is empty`;
+    }
+    
     let smallestNumber = Number.MAX_SAFE_INTEGER;
     let largestNumber = Number.MIN_SAFE_INTEGER;
 
@@ -72,9 +79,11 @@ function getTwoNum (arr) {
         }
     }
 
-    return `Smallest number: ${smallestNumber} & Largest number: ${largestNumber}`
+    return `Smallest number: ${smallestNumber} & Largest number: ${largestNumber}`;
 
 }
 
-let anoArr = []
-console.log(getTwoNum(anoArr))
+let anoArr = [25,26,32,65,48,98,88];
+let emptyArr = [];
+console.log(getTwoNum(anoArr));
+console.log(getTwoNum(emptyArr));
