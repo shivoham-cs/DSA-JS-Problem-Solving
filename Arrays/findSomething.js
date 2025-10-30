@@ -87,3 +87,107 @@ let anoArr = [25,26,32,65,48,98,88];
 let emptyArr = [];
 console.log(getTwoNum(anoArr));
 console.log(getTwoNum(emptyArr));
+
+// Finding second largest number in array.
+
+function findSecondLargest (arr) {
+
+    //  Check for empty arry
+    if (arr.length === 0) {
+        return "Array is empty."
+    }
+
+    //  Check for Single element in array
+    if (arr.length === 1) {
+        return `Only one element in array, can't have second largest number.`
+    }
+
+    // Check for all same values of elemens
+    let allSame = true;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[0]) {
+            allSame = false;
+            break;
+        }
+    }
+
+    if (allSame) {
+        return "All elements are same.";
+    }
+
+    let largest = Number.MIN_SAFE_INTEGER;
+    let secondLargest = Number.MIN_SAFE_INTEGER;
+
+    for ( let i = 0; i < arr.length; i++) {
+        if (largest < arr[i]) {
+            largest = arr[i];
+        }
+
+        if ( arr[i] < largest && arr[i] > secondLargest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    return secondLargest;
+
+}
+
+console.log("------------------------")
+
+console.log("secondLargest:", findSecondLargest([5, 12, 8, 20, 15]));
+console.log("secondLargest:", findSecondLargest([10, 5, 8]));
+console.log("secondLargest:", findSecondLargest([5, 20, 15]));
+console.log("secondLargest:", findSecondLargest([20, 15, 5]));
+console.log("secondLargest:", findSecondLargest([5, 5, 5]));
+console.log("secondLargest:", findSecondLargest([5]));
+console.log("secondLargest:", findSecondLargest([]));
+console.log("secondLargest:", findSecondLargest([5, 5, 8, 5]));
+
+
+
+// Finding second smallest number in array.
+
+function findSecondSmallest (arr) {
+
+    //  Check for empty arry
+    if (arr.length === 0) {
+        return "Array is empty."
+    }
+
+    //  Check for Single element in array
+    if (arr.length === 1) {
+        return `Only one element in array, can't have second largest number.`
+    }
+
+    // Check for all same values of elemens
+    let allSame = true;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[0]) {
+            allSame = false;
+            break;
+        }
+    }
+    
+    if (allSame) {
+        return "All elements are same.";
+    }
+
+    let smallestN = Number.MAX_SAFE_INTEGER;
+    let secondSmallestN = Number.MAX_SAFE_INTEGER;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (smallestN > arr[i]) {
+            smallestN = arr[i];
+        }
+
+        if (smallestN < arr[i] && secondSmallestN > arr[i] ){
+            secondSmallestN = arr[i];
+        }
+    }
+
+    return secondSmallestN;
+
+}
+
+console.log("secondSmallest:", findSecondSmallest([5, 12, 8, 20, 15]));
+console.log("secondSmallest:", findSecondSmallest([2, 2, 3, 4]));
