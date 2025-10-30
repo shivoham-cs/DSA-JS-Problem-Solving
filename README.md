@@ -13,8 +13,8 @@ I created it to **improve my problem-solving skills**, strengthen **core JS conc
 DSA-JS-Problem-Solving/
 │
 ├── Arrays/
-│   ├── reverseArray.js
-│   ├── sumSubarray.js
+│   ├── findSomething.js
+│   ├── 
 │   └── ...
 │
 ├── Strings/
