@@ -18,6 +18,8 @@ console.log(largestNum);
 // Way 1 wrapped in a function
 
 function findLargestNum (arr) {
+    let largestNum = Number.MIN_SAFE_INTEGER; // FIXED: Initialize inside function
+    
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] > largestNum) {
             largestNum = arr[i];
@@ -60,7 +62,7 @@ console.log(anotherArr.sort().reverse().slice(anotherArr.length - 1).toString())
 
 function getTwoNum (arr) {
 
-    // if array is empty - safty check
+    // if array is empty - safety check
 
     if (arr.length === 0) {
         return `Array is empty`;
@@ -92,7 +94,7 @@ console.log(getTwoNum(emptyArr));
 
 function findSecondLargest (arr) {
 
-    //  Check for empty arry
+    //  Check for empty array
     if (arr.length === 0) {
         return "Array is empty."
     }
@@ -102,7 +104,7 @@ function findSecondLargest (arr) {
         return `Only one element in array, can't have second largest number.`
     }
 
-    // Check for all same values of elemens
+    // Check for all same values of elements
     let allSame = true;
     for (let i = 1; i < arr.length; i++) {
         if (arr[i] !== arr[0]) {
@@ -118,12 +120,12 @@ function findSecondLargest (arr) {
     let largest = Number.MIN_SAFE_INTEGER;
     let secondLargest = Number.MIN_SAFE_INTEGER;
 
-    for ( let i = 0; i < arr.length; i++) {
-        if (largest < arr[i]) {
+    // FIXED: Corrected logic for finding second largest
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest; // Update second largest before updating largest
             largest = arr[i];
-        }
-
-        if ( arr[i] < largest && arr[i] > secondLargest) {
+        } else if (arr[i] > secondLargest && arr[i] < largest) {
             secondLargest = arr[i];
         }
     }
@@ -149,17 +151,17 @@ console.log("secondLargest:", findSecondLargest([5, 5, 8, 5]));
 
 function findSecondSmallest (arr) {
 
-    //  Check for empty arry
+    //  Check for empty array
     if (arr.length === 0) {
         return "Array is empty."
     }
 
     //  Check for Single element in array
     if (arr.length === 1) {
-        return `Only one element in array, can't have second largest number.`
+        return `Only one element in array, can't have second smallest number.`
     }
 
-    // Check for all same values of elemens
+    // Check for all same values of elements
     let allSame = true;
     for (let i = 1; i < arr.length; i++) {
         if (arr[i] !== arr[0]) {
@@ -175,12 +177,12 @@ function findSecondSmallest (arr) {
     let smallestN = Number.MAX_SAFE_INTEGER;
     let secondSmallestN = Number.MAX_SAFE_INTEGER;
 
+    // FIXED: Corrected logic for finding second smallest
     for (let i = 0; i < arr.length; i++) {
-        if (smallestN > arr[i]) {
+        if (arr[i] < smallestN) {
+            secondSmallestN = smallestN; // Update second smallest before updating smallest
             smallestN = arr[i];
-        }
-
-        if (smallestN < arr[i] && secondSmallestN > arr[i] ){
+        } else if (arr[i] < secondSmallestN && arr[i] > smallestN) {
             secondSmallestN = arr[i];
         }
     }
